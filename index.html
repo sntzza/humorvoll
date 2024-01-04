@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oilynigga</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <style>
+        @font-face {
+            font-family: myFirstFont;
+            src: url('./fonts/Yasmen.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            animation: shake 0.3s ease-in-out infinite, discoLights 0.3s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translate(0, 0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translate(-5px, -5px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translate(5px, 5px);
+            }
+        }
+
+        @keyframes discoLights {
+            0%, 100% {
+                background-color: #FF0000; /* Red */
+            }
+            25% {
+                background-color: #00FF00; /* Green */
+            }
+            50% {
+                background-color: #0000FF; /* Blue */
+            }
+            75% {
+                background-color: #FF00FF; /* Magenta */
+            }
+        }
+
+        .content {
+            text-align: center;
+            font-size: 24px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+        }
+
+        .media-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+        }
+
+        iframe,
+        img {
+            width: 500px;
+            height: 600px;
+            margin: 10px;
+        }
+
+        /* Stile für die Pop-up-Werbung */
+        .popup-container {
+            display: none;
+            position: fixed;
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #000;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+
+        .popup-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        /* Stil für den Pop-up-Text */
+        .popup-text {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
+        /* Linker Pop-up */
+        .popup-container.left {
+            left: 0;
+        }
+
+        /* Pop-up unten rechts */
+        .popup-container.bottom-right {
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content-container">
+    <div class="content">
+        <h1 class="rainbow-letters">
+            <span>IS</span>
+            <span>THAT</span>
+            <span>DICK</span>
+            <span>GOOD?</span>
+            <span>YES</span>
+            <span>KING</span>
+        </h1>
+    </div>
+
+    <div class="content">
+        <h2>made by santeszz</h2>
+    </div>
+
+    <div class="content">
+        <h1>Hello guys, I'm santeszz, a German developer. Please rate my website; I put hard work into it.</h1>
+    </div>
+
+    <div class="media-container">
+        <iframe src="https://www.youtube.com/embed/KM2_vRwn4kk?autoplay=1&rel=0&controls=0&disablekb=1"
+                width="560" height="315" title="[OST] YES KING" frameborder="0" allowfullscreen></iframe>
+
+        <img src="./images/Download.jpg" alt="yesking">
+        <img src="./images/yesbnnf.jpg" alt="yesking">
+        <img src="./images/Yes-King-Original-Video-Twitter-12.jpg" alt="yesking">
+    </div>
+
+    <!-- Pop-up-Werbung rechts -->
+    <div class="popup-container" id="popup">
+        <span class="close-button" onclick="closePopup()">X</span>
+        <img class="popup-image" src="./images/hotnigga.jpg" alt="Werbung">
+        <audio id="popupAudio" autoplay controls>
+            <source src="./images/come-over-here-and-kiss-me-on-my-hot-mouth-128-ytshorts.savetube.me.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="popup-text">Meet hot juicy niggas in your area!</div>
+    </div>
+
+    <!-- Pop-up-Werbung links -->
+    <div class="popup-container left" id="popupLeft">
+        <span class="close-button" onclick="closePopupLeft()">X</span>
+        <img class="popup-image" src="./images/did-you-pray-today.gif" alt="Werbung">
+        <audio id="popupAudioLeft" autoplay controls>
+            <source src="./images/Did you pray today (meme).mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="popup-text">Did you pray today?!</div>
+    </div>
+
+    <!-- Pop-up-Werbung unten rechts -->
+    <div class="popup-container bottom-right" id="popupBottomRight">
+        <span class="close-button" onclick="closePopupBottomRight()">X</span>
+        <img class="popup-image" src="./images/ambatukam-ambasing.gif" alt="Werbung">
+        <audio id="popupAudioBottomRight" autoplay controls>
+            <source src="./images/ambatukam ughhhh.mp3" type="audio/mp3">
+            Your browser does not support the audio tag.
+        </audio>
+        <div class="popup-text">You want to cum with niggas?</div>
+    </div>
+
+</div>
+
+<script>
+  function openPopup() {
+        document.getElementById('popup').style.display = 'block';
+        document.getElementById('popupAudio').play();
+    }
+
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    function openPopupLeft() {
+        document.getElementById('popupLeft').style.display = 'block';
+        document.getElementById('popupAudioLeft').play();
+    }
+
+    function closePopupLeft() {
+        document.getElementById('popupLeft').style.display = 'none';
+    }
+
+    function openPopupBottomRight() {
+        document.getElementById('popupBottomRight').style.display = 'block';
+        document.getElementById('popupAudioBottomRight').play();
+    }
+
+    function closePopupBottomRight() {
+        document.getElementById('popupBottomRight').style.display = 'none';
+    }
+
+    // Öffne das Pop-up nach einer Verzögerung (z.B. 5 Sekunden)
+    setTimeout(openPopup, 5000);
+
+    // Öffne das linke Pop-up nach einer Verzögerung (z.B. 10 Sekunden)
+    setTimeout(openPopupLeft, 6000);
+
+    // Öffne das Pop-up unten rechts nach einer Verzögerung (z.B. 15 Sekunden)
+    setTimeout(openPopupBottomRight, 4500);
+</script>
+
+</body>
+</html>
