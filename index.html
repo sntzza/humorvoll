@@ -30,7 +30,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            animation: shake 0.2s ease-in-out infinite, discoLights 0.2s infinite;
+            animation: shake 0.3s ease-in-out infinite, discoLights 0.3s infinite;
         }
 
         @keyframes shake {
@@ -123,6 +123,43 @@
             right: 0;
             bottom: 0;
         }
+
+        @media only screen and (max-width: 768px) {
+        body {
+            overflow: auto;
+        }
+
+        .content {
+            font-size: 16px;
+        }
+
+        .media-container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        iframe,
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0; /* Abstand für mobile Geräte anpassen */
+        }
+
+        .popup-container {
+            width: 90%;
+            margin-left: 5%;
+        }
+
+        /* Weitere Anpassungen für Pop-ups auf mobilen Geräten */
+        .popup-text {
+            font-size: 14px;
+        }
+
+        .close-button {
+            top: 5px;
+            right: 5px;
+        }
+    }
     </style>
 </head>
 <body>
@@ -140,7 +177,7 @@
     </div>
 
     <div class="content">
-        <h2>made by santeszz (not racist)</h2>
+        <h2>made by santeszz</h2>
     </div>
 
     <div class="content">
@@ -159,7 +196,7 @@
     <!-- Pop-up-Werbung rechts -->
     <div class="popup-container" id="popup">
         <span class="close-button" onclick="closePopup()">X</span>
-        <img class="popup-image" src="./images/hotnigga.jpg" alt="Werbung">
+        <img class="popup-image" src="./images/hotwurst.jpg" alt="Werbung">
         <audio id="popupAudio" autoplay controls>
             <source src="./images/come-over-here-and-kiss-me-on-my-hot-mouth-128-ytshorts.savetube.me.mp3" type="audio/mp3">
             Your browser does not support the audio tag.
