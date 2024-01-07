@@ -193,77 +193,89 @@
         <img src="./images/Yes-King-Original-Video-Twitter-12.jpg" alt="yesking">
     </div>
 
-    <!-- Pop-up-Werbung rechts -->
-    <div class="popup-container" id="popup">
-        <span class="close-button" onclick="closePopup()">X</span>
-        <img class="popup-image" src="./images/hotwurst.jpg" alt="Werbung">
-        <audio id="popupAudio" autoplay controls>
-            <source src="./images/come-over-here-and-kiss-me-on-my-hot-mouth-128-ytshorts.savetube.me.mp3" type="audio/mp3">
-            Your browser does not support the audio tag.
-        </audio>
-        <div class="popup-text">Meet hot juicy niggas in your area!</div>
-    </div>
+   <!-- Pop-up-Werbung rechts -->
+   <div class="popup-container" id="popup">
+    <span class="close-button" onclick="closePopup('popup', 'popupAudio')">X</span>
+    <img class="popup-image" src="./images/hotwurst.jpg" alt="Werbung">
+    <audio id="popupAudio" controls>
+        <source src="./images/come-over-here-and-kiss-me-on-my-hot-mouth-128-ytshorts.savetube.me.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <div class="popup-text">Meet hot juicy niggas in your area!</div>
+</div>
 
-    <!-- Pop-up-Werbung links -->
-    <div class="popup-container left" id="popupLeft">
-        <span class="close-button" onclick="closePopupLeft()">X</span>
-        <img class="popup-image" src="./images/did-you-pray-today.gif" alt="Werbung">
-        <audio id="popupAudioLeft" autoplay controls>
-            <source src="./images/Did you pray today (meme).mp3" type="audio/mp3">
-            Your browser does not support the audio tag.
-        </audio>
-        <div class="popup-text">Did you pray today?!</div>
-    </div>
+<!-- Pop-up-Werbung links -->
+<div class="popup-container left" id="popupLeft">
+    <span class="close-button" onclick="closePopup('popupLeft', 'popupAudioLeft')">X</span>
+    <img class="popup-image" src="./images/did-you-pray-today.gif" alt="Werbung">
+    <audio id="popupAudioLeft" controls>
+        <source src="./images/Did you pray today (meme).mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <div class="popup-text">Did you pray today?!</div>
+</div>
 
-    <!-- Pop-up-Werbung unten rechts -->
-    <div class="popup-container bottom-right" id="popupBottomRight">
-        <span class="close-button" onclick="closePopupBottomRight()">X</span>
-        <img class="popup-image" src="./images/ambatukam-ambasing.gif" alt="Werbung">
-        <audio id="popupAudioBottomRight" autoplay controls>
-            <source src="./images/ambatukam ughhhh.mp3" type="audio/mp3">
-            Your browser does not support the audio tag.
-        </audio>
-        <div class="popup-text">You want to cum with niggas?</div>
-    </div>
+<!-- Pop-up-Werbung unten rechts -->
+<div class="popup-container bottom-right" id="popupBottomRight">
+    <span class="close-button" onclick="closePopup('popupBottomRight', 'popupAudioBottomRight')">X</span>
+    <img class="popup-image" src="./images/ambatukam-ambasing.gif" alt="Werbung">
+    <audio id="popupAudioBottomRight" controls>
+        <source src="./images/ambatukam ughhhh.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <div class="popup-text">You want to cum with niggas?</div>
+</div>
 
 </div>
 
 <script>
-  function openPopup() {
-        document.getElementById('popup').style.display = 'block';
-        document.getElementById('popupAudio').play();
+    async function openPopup(popupId, audioId) {
+        var popup = document.getElementById(popupId);
+        var audio = document.getElementById(audioId);
+
+        popup.style.display = 'block';
+
+        await audio.play().catch(error => {
+            console.error("Error playing audio:", error);
+        });
     }
 
-    function closePopup() {
-        document.getElementById('popup').style.display = 'none';
+    function closePopup(popupId, audioId) {
+        var popup = document.getElementById(popupId);
+        var audio = document.getElementById(audioId);
+
+        popup.style.display = 'none';
+        audio.pause();
+        audio.currentTime = 0;
     }
 
-    function openPopupLeft() {
-        document.getElementById('popupLeft').style.display = 'block';
-        document.getElementById('popupAudioLeft').play();
+    function setupAudio(popupId, audioId) {
+        var audio = document.getElementById(audioId);
+
+        audio.addEventListener('ended', function () {
+            closePopup(popupId, audioId);
+        });
     }
 
-    function closePopupLeft() {
-        document.getElementById('popupLeft').style.display = 'none';
-    }
-
-    function openPopupBottomRight() {
-        document.getElementById('popupBottomRight').style.display = 'block';
-        document.getElementById('popupAudioBottomRight').play();
-    }
-
-    function closePopupBottomRight() {
-        document.getElementById('popupBottomRight').style.display = 'none';
-    }
+    // Set up audio for each popup
+    setupAudio('popup', 'popupAudio');
+    setupAudio('popupLeft', 'popupAudioLeft');
+    setupAudio('popupBottomRight', 'popupAudioBottomRight');
 
     // Öffne das Pop-up nach einer Verzögerung (z.B. 5 Sekunden)
-    setTimeout(openPopup, 5000);
+    setTimeout(function () {
+        openPopup('popup', 'popupAudio');
+    }, 5000);
 
     // Öffne das linke Pop-up nach einer Verzögerung (z.B. 10 Sekunden)
-    setTimeout(openPopupLeft, 6000);
+    setTimeout(function () {
+        openPopup('popupLeft', 'popupAudioLeft');
+    }, 6000);
 
     // Öffne das Pop-up unten rechts nach einer Verzögerung (z.B. 15 Sekunden)
-    setTimeout(openPopupBottomRight, 4500);
+    setTimeout(function () {
+        openPopup('popupBottomRight', 'popupAudioBottomRight');
+    }, 4500);
 </script>
 
 </body>
