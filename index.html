@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scary Video</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Start screen with the "ENTER" button -->
+  <div id="start-screen">
+    <button id="enter-button">ENTER (risky)</button>
+  </div>
+
+  <!-- Background video element (hidden initially) -->
+  <video id="scary-video" class="hidden" autoplay loop muted>
+    <source src="video/aaaa.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Images on the left and right -->
+  <img src="left-image.jpg" id="left-image" class="hidden" alt="Left Image">
+  <img src="right-image.jpg" id="right-image" class="hidden" alt="Right Image">
+
+  <!-- Text at the top of the page -->
+  <div id="top-text" class="hidden">
+    <h1>Scary Experience Awaits</h1>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
