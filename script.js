@@ -13,5 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Show the video
     scaryVideo.classList.remove("hidden");
+    scaryVideo.muted = false;
   });
 });
