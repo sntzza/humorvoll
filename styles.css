@@ -1,4 +1,4 @@
-/* General styles */
+/* General styling */
 body {
   margin: 0;
   padding: 0;
@@ -6,26 +6,45 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
   background: black;
-  color: white;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+  overflow: hidden; /* Prevent scrolling */
+  animation: blink-bg 2s infinite; /* Blinking background */
 }
 
+/* Blinking animation */
+@keyframes blink-bg {
+  0%, 50% {
+    background: black;
+  }
+  25%, 75% {
+    background: red;
+  }
+}
+
+/* Hidden elements */
 .hidden {
   display: none;
 }
 
-/* Start screen styling (center the button) */
+/* Stop blinking animation when active */
+body.active {
+  animation: none;
+  background: black;
+}
+
+/* Start screen styling */
 #start-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
-  z-index: 1; /* Ensures the button is on top of the video */
+  z-index: 1; /* Ensure the button is on top */
+  text-align: center;
 }
 
+/* Button styling */
 #enter-button {
   padding: 20px 40px;
   font-size: 40px;
@@ -35,13 +54,26 @@ body {
   border: none;
   border-radius: 10px;
   transition: background 0.3s;
+  margin-bottom: 20px; /* Space between button and disclaimer */
 }
 
 #enter-button:hover {
   background: darkred;
 }
 
-/* Video background styling */
+/* Disclaimer box styling */
+#disclaimer-box {
+  max-width: 400px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1); /* Transparent white box */
+  color: white;
+  font-size: 14px; /* Smaller font for disclaimer */
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for box */
+  text-align: center;
+}
+
+/* Fullscreen video styling */
 #scary-video {
   position: absolute;
   top: 0;
@@ -49,69 +81,5 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensure the video covers the screen */
-  z-index: -1; /* Place video behind other elements */
-}
-
-/* Left and right image styling */
-#left-image,
-#right-image {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 15%;
-  height: auto;
-  z-index: 2;
-}
-
-#left-image {
-  left: 5%;
-}
-
-#right-image {
-  right: 5%;
-}
-
-/* Top text styling */
-#top-text {
-  position: absolute;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  z-index: 2;
-  font-size: 2rem;
-  text-align: center;
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-  #enter-button {
-    font-size: 30px;
-    padding: 15px 30px;
-  }
-
-  #left-image,
-  #right-image {
-    max-width: 20%; /* Make images larger for small screens */
-  }
-
-  #top-text {
-    font-size: 1.5rem; /* Smaller text for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  #enter-button {
-    font-size: 24px;
-    padding: 10px 20px;
-  }
-
-  #left-image,
-  #right-image {
-    max-width: 25%; /* Further increase image size for clarity */
-  }
-
-  #top-text {
-    font-size: 1.2rem;
-  }
+  z-index: -1; /* Ensure the video is in the background layer */
 }
