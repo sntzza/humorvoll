@@ -8,12 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // Hide the start screen
     startScreen.style.display = "none";
 
-    // Ensure video plays with sound
+    // Show the video by removing the 'hidden' class
+    scaryVideo.classList.remove("hidden");
+
+    // Ensure video plays with sound (workaround for iPads)
     scaryVideo.muted = false;
-    scaryVideo.play();
+    scaryVideo.play().catch(error => {
+      console.error("Autoplay failed, attempting to play with user interaction", error);
+    });
+
+    // Remove background animation (optional)
+    document.body.classList.add("active");
   });
 
-  // Optional: Ensure the video starts on any left click
+  // Optional: Play video on any click if paused
   document.addEventListener("click", () => {
     if (scaryVideo.paused) {
       scaryVideo.muted = false;
